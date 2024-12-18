@@ -123,6 +123,12 @@ main.cart {
         width: 100%;
     }
 
+    /* no margins on the image, ever */
+    .poster-card_container-content>*:not(img) {
+        margin-left: var(--pc-padding-rem);
+        margin-right: var(--pc-padding-rem);
+    }
+
     .cart-items-list {
 
         display: flex;

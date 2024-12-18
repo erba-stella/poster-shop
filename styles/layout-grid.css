@@ -122,6 +122,13 @@ main.checkout {
             color: var(--pc-color);
         }
 
+
+        /* no margins on the image, ever */
+        .poster-card > *:not(img) {
+            margin-left: var(--pc-padding-rem);
+            margin-right: var(--pc-padding-rem);
+        }
+
     }
 
     &>.cart-items-list {
@@ -139,14 +146,6 @@ main.checkout {
     display: grid;
     gap: var(--sz__ph);
     row-gap: max(var(--sz__ph), 4rem);
-
-    /* table,
-    tbody,
-    tr,
-    th,
-    td {
-        display: grid;
-    } */
 
     table,
     tbody {
@@ -175,8 +174,6 @@ main.checkout {
         justify-self: right;
     }
 }
-
-
 
 
 /* -------------------------------
@@ -231,7 +228,6 @@ main.checkout {
         grid-template-areas:
             ". nav-area adress-area ."
             ". socialmedia-area socialmedia-area .";
-
 
         row-gap: 5.5vw;
         column-gap: 0;

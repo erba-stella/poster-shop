@@ -219,11 +219,6 @@ a {
     background-color: var(--pc-color-bg);
     padding-bottom: var(--pc-padding-rem);
 
-    /* no margins on the image, ever */
-    *:not(img) {
-        margin-left: var(--pc-padding-rem);
-        margin-right: var(--pc-padding-rem);
-    }
 }
 
 /*  Buttons  */
