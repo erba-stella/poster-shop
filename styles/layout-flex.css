@@ -1,0 +1,208 @@
+/*  -------------------------------
+    Global layout 
+*/
+
+body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sz__ph);
+}
+
+/* -------------------------------
+    SITE-HEADER 
+*/
+
+/* 
+I want the h1-heading to be vertically centered in the middle of the header,
+but without having to wrap the menu-button in a div.
+How to achieve this with flex-box?
+
+.site-header = justify-content: flex-end 
+h1, img =  row-height 1/3 of total site-header-height
+menu-button = push it up with margin-bottom:auto
+
+*/
+
+.site-header {
+    padding: var(--sz__pw);
+    padding-bottom: 0;
+
+    /* children */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+
+    /* variables */
+    --row-height: calc(var(--site-header-height) * .3333);
+    --transform-left: calc((var(--site-header-height) * .045) * -1);
+    /* 
+        How to use the negative value of a CSS variable?
+        -   wrap it in the calc() function and multiply it by -1. 
+            Read more: https://www.hendriklammers.com/notes/negate-css-variable
+    */
+
+    h1 {
+        min-height: var(--row-height);
+        line-height: var(--row-height);
+    }
+
+    .site-header__img {
+        height: calc(var(--row-height) * .96);
+        padding-top: calc(var(--row-height) * .04);
+        width: auto;
+        transform: translateX(var(--transform-left));
+    }
+
+    .site-header__menu-button {
+        align-self: self-start;
+        margin-bottom: auto;
+
+        /* child - center icon */
+        display: flex;
+        justify-content: center;
+    }
+}
+
+
+/* -------------------------------
+    MAIN (POSTER-CARD WRAPPER)
+*/
+
+main {
+    padding: 0 var(--sz__padding-sides);
+
+    /* children */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: var(--sz__pw);
+    row-gap: var(--sz__ph);
+
+    .poster-card {
+        flex-basis: var(--sz__card-min-width);
+        flex-grow: 1;
+        flex-shrink: 0;
+    }
+}
+
+/* -------------------------------
+    POSTER-CARD
+*/
+
+.poster-card {
+
+    .poster-card_container-content {
+
+        /* children */
+        display: flex;
+        flex-direction: column;
+        gap: var(--sz__card-gap);
+        height: 100%;
+
+        button {
+            /* Pushing itself down */
+            margin-top: auto;
+            /* Aligned to the left and no "stretch" */
+            align-self: flex-start;
+        }
+    }
+}
+
+
+/* -------------------------------
+    CHECKOUT PAGE
+*/
+
+main.cart {
+
+    row-gap: var(--sz__ph-small);
+
+    h2,
+    .cart-items-list {
+        width: 100%;
+    }
+
+    .cart-items-list {
+
+        display: flex;
+        flex-direction: column;
+        gap: var(--sz__ph);
+
+        /* Table - set every element to position:flex  */
+        table,
+        tbody,
+        tr,
+        th,
+        td {
+            display: flex;
+        }
+
+        table,
+        tbody {
+            flex-direction: column;
+            gap: var(--sz__card-gap);
+        }
+
+        tbody {
+            gap: calc(var(--sz__card-gap) / 2);
+        }
+
+        /* Position table row: children */
+
+        tr>*:first-child {
+            flex-basis: 50%;
+        }
+
+        tr>*:last-child {
+            flex-basis: 5.5rem;
+            margin-left: auto;
+        }
+
+        button {
+            align-self: self-end;
+        }
+
+    }
+
+}
+
+/* -------------------------------
+    FOOTER
+*/
+
+.site-footer {
+    padding: var(--sz__ph) var(--sz__padding-sides);
+
+    /* children */
+    display: flex;
+    justify-content: flex-start;
+    gap: 10%;
+
+    section {
+        display: flex;
+        flex-direction: column;
+    }
+
+    section:nth-child(3) {
+        nav {
+            display: flex;
+            justify-content: space-between;
+            gap: 5%;
+        }
+    }
+}
+
+@media (width < 569px) {
+
+    .site-footer {
+        flex-wrap: wrap;
+        justify-content: space-around;
+        gap: 1.2em;
+        align-items: stretch;
+
+        * {
+            flex-grow: 1;
+        }
+    }
+}

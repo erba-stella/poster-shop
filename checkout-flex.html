@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Poster Shop Checkout Flex</title>
+
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+      
+      <!-- Font Roboto Condensed -->
+      
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+      
+      <!-- CSS Stylesheets -->
+      <link rel="stylesheet" href="styles/styles-global.css" />
+      <link rel="stylesheet" href="styles/layout-flex.css" />
+      <!-- <link rel="stylesheet" href="styles/layout-grid.css" /> -->
+
+</head>
+
+<body>
+
+  <header class="site-header">
+
+    <label class="site-header__menu-button">
+      <input type="checkbox" class="hidden" />
+      <img class="site-header__menu-icon" src="assets/navicon.svg" alt="Visa meny">
+    </label>
+
+    <h1>Checkout</h1>
+    <img class="site-header__img" src="assets/ninjahead.svg" alt="The Ninja is looking at you!">
+
+  </header>
+
+  <main class="cart">
+
+    <h2>Varor i korg</h2>
+
+    <article class="poster-card">
+      <div class="poster-card_container-content">
+        <img src="assets/char-7.png" alt="En kvinnlig fotograf med glasögon och kamera, omgiven av en glad gul bakgrund.">
+        <h2>Fotograf</h2>
+        <button>Ta bort från varukorg</button>
+      </div>
+    </article>
+
+    <article class="poster-card">
+      <div class="poster-card_container-content">
+        <img src="assets/char-9.png"
+          alt='Tecknad personlig tränare med visselpipa i munnen, klädd i grön tröja med texten "eat, sleep, crossfit, repeat" mot en livlig blå bakgrund.'>
+        <h2>Personlig tränare</h2>
+        <button>Ta bort från varukorg</button>
+      </div>
+    </article>
+
+    <article class="cart-items-list">
+      <table>
+        <caption class="hidden">Din varukorg</caption>
+        <thead>
+          <tr>
+            <th scope="col">Vara</th>
+            <th scope="col">Antal</th>
+            <th scope="col">Pris</th>
+          </tr>
+        </thead>
+      
+        <tbody>
+          <tr>
+            <th scope="row">Poster Fotograf</td>
+            <td>1</td>
+            <td>179 sek</td>
+          </tr>
+          <tr>
+            <th scope="row">Poster Crossfit</td>
+            <td>1</td>
+            <td>179 sek</td>
+          </tr>
+        </tbody>
+      
+        <tfoot>
+          <tr>
+            <th scope="row">Totalt</th>
+            <td>358 sek</td>
+          </tr>
+        </tfoot>
+
+      </table>
+
+      <button>Gimmie gimmie gimmie!</button>
+    </article> 
+
+    <!--  Tables - (WCAG 2.0 success criteria)
+          https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table 
+          https://www.w3.org/TR/WCAG20-TECHS/H63
+          -->
+
+  </main>
+  <footer class="site-footer">
+
+    <section>
+      <h2>Nav</h2>
+      <a href="#">Products</a>
+      <a href="#">About Us</a>
+      <a href="#">Contact</a>
+    </section>
+
+    <section>
+      <h2>Adress</h2>
+      <address>Plinkeplonkvägen 32 <br>888 81 Klonkberga</address>
+    </section>
+
+    <section>
+      <h2 id="socialmedia">Social media</h2>
+
+      <nav aria-labelledby="socialmedia">
+        <a href="#"><img src="assets/logo-twitter.svg" alt="Twitter"></a>
+        <a href="#"><img src="assets/logo-facebook.svg" alt="logo-facebook"></a>
+        <a href="#"><img src="assets/logo-instagram.svg" alt="logo-instagram"></a>
+        <a href="#"><img src="assets/logo-linkedin.svg" alt="LinkedIn"></a>
+      </nav>
+      <!-- Referenser:
+        https://www.w3.org/WAI/tutorials/page-structure/labels/
+        https://www.w3.org/WAI/GL/wiki/Grouping_related_links_using_the_nav_element 
+        -->
+    </section>
+  </footer>
+
+</body>
+
+</html>

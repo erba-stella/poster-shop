@@ -1,0 +1,283 @@
+/*  RESET */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+body {
+    min-height: 100svh;
+}
+
+table,
+table * {
+    border: none;
+}
+
+/*  GLOBAL VARIABLES */
+
+:root {
+
+    /* colors */
+
+    --clr__white: #FFFFFF;
+    --clr__dark-text: #222222;
+    --clr__site-header: #3DE17E;
+    --clr__body-bg: #202123;
+    --clr__site-footer-bg: #333333;
+    --clr__card-btn-bg: #E84057;
+    --clr__hover-bg: #29cdff;
+    --clr__table-bg: #340809;
+
+    /* Font-sizes */
+
+    --f__base: 1rem;
+    --f__h2-s: calc(var(--f__base) * 1.66);
+    --f__h2-m: calc(var(--f__base) * 2.32);
+
+    --f__h1: min(calc(2.7rem + 3lvw), 6rem);
+    --f__h2-s-max: clamp(var(--f__base),
+            (var(--f__base) / 2) + 2vw,
+            var(--f__h2-s));
+
+
+    /*  SIZES (margins, paddings, gaps... ) */
+
+    /* base-size */
+    --sz__p: 1svmin;
+
+    /* padding-width */
+    --sz__pw: calc(var(--sz__p) * 5);
+
+    /* padding-height */
+    --sz__ph: calc(var(--sz__p) * 9);
+    --sz__ph-small: calc(var(--sz__p) * 7);
+
+    /* max-width - for page content */
+    --sz__content-max-width: 1390px;
+
+    /* min-width - for poster-cards */
+    --sz__card-min-width: 300px;
+
+    /* padding/margin - when you want children to have a
+    max-width */
+    --sz__pw-max: calc((100% - var(--sz__content-max-width)) / 2);
+
+    /* ---------------------------------------------------- */
+
+    /* padding for main and .site-footer */
+    --sz__padding-sides: max(var(--sz__pw), var(--sz__pw-max));
+
+    /* height site-header */
+    --x: calc(160px + (60 * var(--sz__p)) + var(--sz__pw));
+    --site-header-height: clamp(300px, var(--x), 500px);
+
+    /* gap inside the cards */
+    --sz__card-gap: 1.5em;
+}
+
+/* TYPOGRAPHY & COLOR */
+
+body {
+    font-family: "Roboto Condensed", sans-serif;
+    line-height: 1.25;
+    color: var(--clr__white);
+    background-color: var(--clr__body-bg);
+    font-size: var(--f__base);
+}
+
+/* Text, fonts */
+
+h1,
+h2,
+button {
+    font-family: Roboto, sans-serif;
+}
+
+h1 {
+    font-size: var(--f__h1);
+    color: var(--clr__dark-text);
+}
+
+h2 {
+    font-size: var(--f__h2-m);
+}
+
+.poster-card h2 {
+    font-size: var(--f__h2-s);
+}
+
+a {
+    color: var(--clr__white);
+    text-decoration: none;
+}
+
+
+/*  Header   */
+
+.site-header {
+    background-color: var(--clr__site-header);
+
+
+    .site-header__menu-button {
+        cursor: pointer;
+        width: 3rem;
+        aspect-ratio: 1/1;
+        border-radius: 0.3rem;
+        transition: scale .5s;
+
+        &:hover {
+            scale: 1.1;
+        }
+
+        .site-header__menu-icon {
+            color: var(--clr__dark-text);
+            width: 75%;
+        }
+    }
+}
+
+
+/*  Footer   */
+
+.site-footer {
+    background-color: var(--clr__site-footer-bg);
+
+    address {
+        font-style: normal;
+    }
+}
+
+/*  Poster Card (with container queries for styling) */
+
+.poster-card {
+    container-type: inline-size;
+    container-name: poster-card;
+
+    /* local variables */
+    --pc-color: var(--clr_white);
+    --pc-color-bg: transparent;
+    --pc-padding-rem: 0rem;
+
+    .poster-card_container-content {
+
+        background-color: var(--pc-color-bg);
+        padding-bottom: var(--pc-padding-rem);
+
+        /* no margins on the image, ever */
+        *:not(img) {
+            margin-left: var(--pc-padding-rem);
+            margin-right: var(--pc-padding-rem);
+        }
+
+        p,
+        h2 {
+            color: var(--pc-color);
+        }
+    }
+
+    /* Dynamic white bg card design on small screens */
+
+    @container (635px < width) {
+        .poster-card_container-content {
+            /* local variables */
+            --pc-color: var(--clr__dark-text);
+            --pc-color-bg: var(--clr__white);
+            --pc-padding-rem: 1rem;
+        }
+    }
+
+    /* Dynamic white bg card design on larger screens */
+
+    @media (1125px <=width) {
+        @container (478px < width) {
+            .poster-card_container-content {
+                /* local variables */
+                --pc-color: var(--clr__dark-text);
+                --pc-color-bg: var(--clr__white);
+                --pc-padding-rem: 1rem;
+            }
+        }
+    }
+}
+
+/* Static white bg card design in cart (checkout-page)  */
+
+.cart .poster-card {
+    /* local variables */
+    --pc-color: var(--clr__dark-text);
+    --pc-color-bg: var(--clr__white);
+    --pc-padding-rem: 1rem;
+
+    background-color: var(--pc-color-bg);
+    padding-bottom: var(--pc-padding-rem);
+
+    /* no margins on the image, ever */
+    *:not(img) {
+        margin-left: var(--pc-padding-rem);
+        margin-right: var(--pc-padding-rem);
+    }
+}
+
+/*  Buttons  */
+
+button {
+    background-color: var(--clr__card-btn-bg);
+    color: inherit;
+    font-size: inherit;
+    font-weight: 600;
+    border: none;
+    border-radius: .3em;
+    padding: 0.8em 1.2em;
+}
+
+
+/*  Hidden elements (intended for screen readers)   */
+
+.hidden {
+    appearance: none;
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+
+/*  CART - CHECKOUT PAGE    */
+
+.cart-items-list {
+
+    text-align: left;
+
+    button {
+        font-size: var(--f__h2-s);
+    }
+
+    tbody th {
+        font-weight: 300;
+    }
+
+    tbody,
+    tfoot {
+        font-size: var(--f__h2-s-max);
+    }
+
+    thead {
+        background-color: var(--clr__table-bg);
+        padding: 1rem 0 1rem .5rem;
+    }
+
+    tfoot {
+        border-top: .05em solid;
+    }
+
+}
